@@ -1,0 +1,2 @@
+# install production dependencies
+-r requirements/prd.txt
