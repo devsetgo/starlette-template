@@ -28,11 +28,11 @@ def init_app():
         # or None and defaults to "info"
         log_rotation="10 MB",
         # or None and default is 10 MB
-        log_retention="1 Day",
+        log_retention="10 Day",
         # or None and defaults to "14 Days"
         log_backtrace=True,
         # or None and defaults to False
-        app_name="my_app",
+        app_name=config_settings.app_name,
         # app name is used to identify the application
         # this is an optional field
         service_id=str(uuid.uuid4()),
@@ -40,7 +40,7 @@ def init_app():
         # this is an optional field
         append_app_name=True,
         # append app name to log file name defaults to false
-        append_service_id=True,
+        append_service_id=False,
         # append app name and service name to log file name defaults to false
     )
     logger.info("Initiating application")

@@ -10,13 +10,13 @@ from resources import templates
 
 
 async def temp_homepage(request):
-    logger.critical(request.session)
+    logger.info(request.session)
 
-    return JSONResponse({"message": "Hello World"},status_code=200)
+    return JSONResponse({"message": "Temp Home"},status_code=200)
 
 # @login_required.require_login
 async def homepage(request):
-    logger.critical(request.session)
+    logger.info(request.session)
     if "user_name" not in request.session:
         return RedirectResponse(url=f"/", status_code=303)
 
