@@ -18,5 +18,5 @@ middleware = [
     ),
     Middleware(PrometheusMiddleware),
     # Middleware(PrometheusMiddleware),
-    Middleware(LoggerMiddleware),
+    # Middleware(LoggerMiddleware),
 ]

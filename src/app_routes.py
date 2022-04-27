@@ -5,12 +5,12 @@ application routes
 from starlette.routing import Mount, Route
 from starlette.staticfiles import StaticFiles
 
-from api.index import endpoints as index_endpoints
-from api.app_status import endpoints as status_endpoints, routing as status_routing
+from api.index import endpoint_paths as index_routes, endpoints as index_endpoints
+from api.app_status import endpoint_paths as status_routing
 
-routing = [
-    Route("/", index_endpoints.homepage, name="dashboard", methods=["GET", "POST"]),
-    Route("/about", index_endpoints.about_page, name="about", methods=["GET"]),
-    Mount("/status", name="status", routes=status_routing.routes),
+routes = [
+    # Route("/", endpoint=index_endpoints.temp_homepage, methods=["GET"]),
+    Mount("/", name="index", routes=index_routes.endpoint_routes),
+    Mount("/status", name="status", routes=status_routing.endpoint_routes),
     Mount("/static", app=StaticFiles(directory="statics"), name="static"),
 ]

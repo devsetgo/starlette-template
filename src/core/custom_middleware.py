@@ -26,3 +26,4 @@ class LoggerMiddleware(BaseHTTPMiddleware):
             )
             logger.debug(f"full_request_data: {dict(request)}")
         return response
+        

@@ -19,11 +19,11 @@ async def not_allowed(request, exc):
     """
     Return an HTTP 403 page.
     """
-    if "user_name" not in request.session:
-        e = f"user page access without being logged in from {request.client.host}"
-        logger.error(e)
-        return RedirectResponse(url="/", status_code=303)
-
+    # if "user_name" not in request.session:
+    #     e = f"user page access without being logged in from {request.client.host}"
+    #     logger.error(e)
+    #     return RedirectResponse(url="/", status_code=303)
+    logger.info(f"{request.url} - {request}")
     template = "error/403.html"
     context = {"request": request}
     return templates.TemplateResponse(template, context, status_code=403)
@@ -33,12 +33,12 @@ async def not_found(request, exc):
     """
     Return an HTTP 404 page.
     """
-    if "user_name" not in request.session:
+    # if "user_name" not in request.session:
 
-        e = f"user page access without being logged in from {request.client.host}"
-        logger.error(e)
-        return RedirectResponse(url="/", status_code=303)
-
+    #     e = f"user page access without being logged in from {request.client.host}"
+    #     logger.error(e)
+    #     return RedirectResponse(url="/", status_code=303)
+    logger.info(f"URL: {request.url} - Request: {request}")
     template = "error/404.html"
     context = {"request": request}
     return templates.TemplateResponse(template, context, status_code=404)
@@ -48,11 +48,11 @@ async def server_error(request, exc):
     """
     Return an HTTP 500 page.
     """
-    if "user_name" not in request.session:
-        e = f"Server error 500 from {request.client.host}"
-        logger.error(e)
-        return RedirectResponse(url="/", status_code=303)
-
+    # if "user_name" not in request.session:
+    #     e = f"Server error 500 from {request.client.host}"
+    #     logger.error(e)
+    #     return RedirectResponse(url="/", status_code=303)
+    logger.info(f"{request.url} - {request}")
     template = "error/500.html"
     context = {"request": request}
     return templates.TemplateResponse(template, context, status_code=500)

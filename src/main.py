@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from concurrent.futures.thread import _worker
 from starlette.applications import Starlette
 
 import resources
@@ -18,14 +19,12 @@ else:
 
 app = Starlette(
     debug=debug_value,
-    routes=app_routes.routing,
+    routes=app_routes.routes,
     middleware=app_middleware.middleware,
     exception_handlers=exceptions.exception_handlers,
     on_startup=[resources.startup],
     on_shutdown=[resources.shutdown],
 )
-# adding prometheus metrics route
-# app.add_route("/metrics/", metrics)
 
 
 # for starting server by file
