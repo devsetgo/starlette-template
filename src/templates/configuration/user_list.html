@@ -1,0 +1,24 @@
+{% if request.session.admin == true %}
+
+    <div class="form-group">
+        <label>User Name</label>
+        <select class="form-control select2bs4" style="width: 100%;">
+            <option selected="selected">{{request.session["user_name"]}}</option>
+
+            {% for u in user_list %}
+            <option>{{u.name}}</option>
+            {% endfor %}
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label>User Name</label>
+        <input type="text" id="user_name" class="form-control" placeholder="Enter ..."  value="{{user_list.0.name}}" disabled>
+    </div>
+    {{user_list}}
+    {%else%}
+    <div class="form-group">
+        <label>Text Disabled</label>
+        <input type="text" id="user_name" class="form-control" placeholder="Enter ..."  value="{{user_list.0.name}}" disabled>
+    </div>
+    {% endif %}
