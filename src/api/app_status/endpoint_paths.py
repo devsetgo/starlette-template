@@ -11,7 +11,7 @@ from starlette_prometheus import metrics
 # note alphabetical order is important for prescidence of routes
 # https://www.starlette.io/routing/#route-priority
 endpoint_routes = [
-    # Route("/", endpoint=status_endpoints.status, methods=["GET"]),
+    Route("/", endpoint=status_endpoints.status, methods=["GET"]),
     Route("/health", endpoint=status_endpoints.health_status, methods=["GET"]),
     Route("/information", endpoint=status_endpoints.information,
           methods=["GET"]),

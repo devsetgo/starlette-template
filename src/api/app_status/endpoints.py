@@ -10,6 +10,7 @@ from starlette.responses import JSONResponse
 
 page_url = "/status"
 
+
 async def status(request):
     """
     Application status endpoint with response from various connections
@@ -17,18 +18,20 @@ async def status(request):
     # for rt in routes:
     #     print(rt)
     logger.info(f"page {page_url} accessed")
-    return JSONResponse({"status": "endpoint_routes"})
+    return JSONResponse({"status": "yo"})
+
 
 async def health_status(request):
     """
     Application status endpoint with response of UP
     """
     logger.info(f"page {page_url}/health accessed")
-    return JSONResponse({"status": "UP"})
+    return JSONResponse({"status": "up"})
+
 
 async def information(request):
     """
     Application status endpoint with response from various connections
     """
     logger.info(f"page {page_url}/information accessed")
-    return JSONResponse({"information": "UP"})
+    return JSONResponse({"information": "up"})

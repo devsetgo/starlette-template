@@ -1,0 +1,39 @@
+<!-- Configuration navigation -->
+<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
+    <li class="nav-item has-treeview  menu-{% if section=="configuration"%}open{%else%}closed{%endif%} ">
+      <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-cogs"></i>
+        <p>
+          Configuration
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="/configuration/" class="nav-link {% if active=="config-index"%} active{%endif%}">
+            <i class="fas fa-cog nav-icon"></i>
+            <p>My Configurations</p>
+          </a>
+        </li>
+        </li>
+        <li class="nav-item">
+          <a href="/configuration/tag/new" class="nav-link {% if active=="tag-new"%} active{%endif%}">
+            <i class="fas fa-cog nav-icon"></i>
+            <p>New Tag</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/configuration/notes/import" class="nav-link {% if active=="note-import"%} active{%endif%}">
+            <i class="fas fa-cog nav-icon"></i>
+            <p>Notes Import</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/configuration/notes/export" class="nav-link {% if active=="note-export"%} active{%endif%}">
+            <i class="fas fa-cog nav-icon"></i>
+            <p>Notes Export</p>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
