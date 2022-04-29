@@ -63,7 +63,6 @@ class Settings(BaseSettings):
     admin_user_key: str = None
     admin_user_email: str = None
 
-
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
