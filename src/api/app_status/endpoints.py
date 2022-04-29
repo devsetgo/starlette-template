@@ -12,6 +12,7 @@ from dsg_lib.folder_functions import last_data_files_changed
 
 page_url = "/status"
 
+
 async def status(request):
     """
     Application status endpoint with response from various connections
@@ -25,7 +26,7 @@ async def status(request):
         "environment": "/status/env",
         "log": "/status/log",
     }
-    the_routes=dict(sorted(status_routes.items(),key= lambda x:x[1]))
+    the_routes = dict(sorted(status_routes.items(), key=lambda x: x[1]))
     logger.info(f"page '{request.url.path}' accessed")
     return JSONResponse(the_routes)
 
@@ -37,14 +38,16 @@ async def health_status(request):
     logger.info(f"page '{request.url.path}' accessed")
     return JSONResponse({"status": "up"})
 
+
 async def information(request):
     """
     Application status endpoint with response from various connections
     """
     # custom information here.
-    data:dict = {"information": "add yours here"}
+    data: dict = {"information": "add yours here"}
     logger.info(f"page '{request.url.path}' accessed")
     return JSONResponse(data)
+
 
 # this needs to be secure
 async def environment_config(request):
@@ -53,6 +56,7 @@ async def environment_config(request):
     """
     logger.info(f"page '{request.url.path}' accessed")
     return JSONResponse(dict(config_settings))
+
 
 # this needs to be secure
 async def log_file(request):
@@ -67,7 +71,7 @@ async def log_file(request):
     last_file = last_data_files_changed(directory_path=log_directory)
     file_name = str(last_file[1])
     file_save = Path.cwd().joinpath(directory_to__files).joinpath(file_name)
-        # open/create file
+    # open/create file
     with open(file_save, "r", encoding="utf-8") as f:
         # write data to file
         data = f.read()
