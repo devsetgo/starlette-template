@@ -17,6 +17,4 @@ endpoint_routes = [
     Route("/information", endpoint=status_endpoints.information, methods=["GET"]),
     Route("/log", endpoint=status_endpoints.log_file, methods=["GET"]),
     Route("/metrics", endpoint=metrics, methods=["GET"]),
-    Route("/shutdown", endpoint=status_endpoints.shut_down, methods=["GET"]),
-    Route("/thread-dump", endpoint=status_endpoints.thread_dump, methods=["POST"]),
 ]
