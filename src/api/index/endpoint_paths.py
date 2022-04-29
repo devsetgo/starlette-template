@@ -11,6 +11,5 @@ from api.index import endpoints
 # https://www.starlette.io/routing/#route-priority
 endpoint_routes = [
     Route("/home", endpoint=endpoints.homepage, methods=["GET"]),
-    Route("/about", endpoint=endpoints.about_page,
-          methods=["GET"]),
+    Route("/about", endpoint=endpoints.about_page, methods=["GET"]),
 ]

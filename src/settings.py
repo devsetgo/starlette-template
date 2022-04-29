@@ -75,4 +75,5 @@ class Settings(BaseSettings):
 def get_settings():
     return Settings()
 
+
 config_settings = get_settings()
