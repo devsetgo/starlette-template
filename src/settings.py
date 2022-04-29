@@ -5,14 +5,10 @@ For local development, use a .env file to set
 environment variables.
 """
 
-
-# import os
 import secrets
 from functools import lru_cache
 
 from pydantic import BaseSettings, HttpUrl
-
-# from core.demo import create_demo_data
 
 
 class Settings(BaseSettings):
