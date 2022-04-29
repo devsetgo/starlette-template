@@ -57,14 +57,12 @@ class Settings(BaseSettings):
     loguru_logging_level: str = "INFO"
     release_env: str = "prd"
     debug: bool = False
-    sendgrid_key: str = "insert-key"
     login_timeout: int = 120
     admin_create: bool = False
     admin_user_name: str = None
     admin_user_key: str = None
     admin_user_email: str = None
-    create_demo_data: bool = False
-    create_demo_qty: int = 0
+
 
     class Config:
         env_file = ".env"
