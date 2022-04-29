@@ -2,11 +2,12 @@
 """
 Application status endpoints
 """
-
+from pathlib import Path
+import re
 from loguru import logger
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, PlainTextResponse
 from settings import config_settings
-from dsg_lib.file_functions import open_text
+from dsg_lib.folder_functions import last_data_files_changed
 
 
 page_url = "/status"
@@ -15,6 +16,7 @@ async def status(request):
     """
     Application status endpoint with response from various connections
     """
+
     status_routes = {
         "status": "/status/",
         "health": "/status/health",
@@ -22,11 +24,9 @@ async def status(request):
         "metrics": "/status/metrics",
         "environment": "/status/env",
         "log": "/status/log",
-        "shutdown": "/status/shutdown",
-        "thread_dump": "/status/thread",
     }
     the_routes=dict(sorted(status_routes.items(),key= lambda x:x[1]))
-    logger.info(f"page {page_url} accessed")
+    logger.info(f"page '{request.url.path}' accessed")
     return JSONResponse(the_routes)
 
 
@@ -34,50 +34,43 @@ async def health_status(request):
     """
     Application status endpoint with response of UP
     """
-    logger.info(f"page {page_url}/health accessed")
+    logger.info(f"page '{request.url.path}' accessed")
     return JSONResponse({"status": "up"})
 
 async def information(request):
     """
     Application status endpoint with response from various connections
     """
-    logger.info(f"page {page_url}/information accessed")
-    return JSONResponse({"information": "up"})
+    # custom information here.
+    data:dict = {"information": "add yours here"}
+    logger.info(f"page '{request.url.path}' accessed")
+    return JSONResponse(data)
 
-
+# this needs to be secure
 async def environment_config(request):
     """
-    Application status endpoint with response from various connections
+    Application enviornment configuration endpoint
     """
-    print(dict(config_settings))
-    logger.info(f"page {page_url}/information accessed")
+    logger.info(f"page '{request.url.path}' accessed")
     return JSONResponse(dict(config_settings))
 
-
+# this needs to be secure
 async def log_file(request):
     """
-    Application status endpoint with response from various connections
-    """
-    data = open_text(config_settings.LOG_FILE)
-    logger.info(f"page {page_url}/information accessed")
-    return JSONResponse({"information": "up"})
-
-async def thread_dump(request):
-    """
-    Application status endpoint with response from various connections
+    Application log file endpoint
+    Only displays for instance access and not a central log file
     """
 
-    logger.info(f"page {page_url}/information accessed")
-    return JSONResponse({"information": "up"})
+    directory_to__files: str = "log"
+    # get log file name from directory
+    log_directory = Path.cwd().joinpath(directory_to__files)
+    last_file = last_data_files_changed(directory_path=log_directory)
+    file_name = str(last_file[1])
+    file_save = Path.cwd().joinpath(directory_to__files).joinpath(file_name)
+        # open/create file
+    with open(file_save, "r", encoding="utf-8") as f:
+        # write data to file
+        data = f.read()
 
-
-async def shut_down(request):
-    """
-    Application status endpoint with response from various connections
-    """
-    import sys 
-    
-    logger.info(f"page {page_url}/information accessed")
-    sys.exit()
-
-
+    logger.info(f"page '{request.url.path}' accessed")
+    return PlainTextResponse(data)
