@@ -3,7 +3,7 @@
 from concurrent.futures.thread import _worker
 from starlette.applications import Starlette
 
-import resources
+import resources as resources
 import app_routes
 from core import exceptions
 from resources import init_app

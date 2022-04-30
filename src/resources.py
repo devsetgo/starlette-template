@@ -9,11 +9,15 @@ from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 from dsg_lib import logging_config
 
+from pathlib import Path
+
 from settings import config_settings
 
+resouce_path = Path(__file__).parent
+
 # templates and static files
-templates = Jinja2Templates(directory="templates")
-statics = StaticFiles(directory="statics")
+templates = Jinja2Templates(directory=resouce_path / "resources" / "templates")
+statics = StaticFiles(directory=resouce_path / "resources" / "statics")
 
 
 def init_app():
