@@ -10,12 +10,13 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
+    {% include "pages/nav.html" %}
     {% if request.session.user_name %}
 
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
         <!--- Notes Section -->
-        {% include "notes/nav.html" %}
+        {% include "pages/nav.html" %}
         <!--- Jobs Section -->
 
         <!-- Final Section -->
