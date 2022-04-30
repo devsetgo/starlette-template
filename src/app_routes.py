@@ -14,5 +14,5 @@ routes = [
     Route("/", endpoint=index_endpoints.homepage, methods=["GET"]),
     Mount("/index", name="index", routes=index_routes.endpoint_routes),
     Mount("/status", name="status", routes=status_routing.endpoint_routes),
-    Mount("/static", app=statics),
+    Mount("/static", app=StaticFiles(directory="statics"), name="static"),
 ]
