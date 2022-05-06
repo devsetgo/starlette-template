@@ -24,7 +24,7 @@ async def homepage(request):
     #     logger.info(f"page '{request.url.path}' accessed")
     #     return RedirectResponse(url=f"/", status_code=303)
     logger.info(f"page '{request.url.path}' accessed")
-    return RedirectResponse(url=f"/dashboard", status_code=303)
+    return RedirectResponse(url=f"/pages/index", status_code=303)
 
 
 # @login_required.require_login
