@@ -19,7 +19,7 @@ endpoint_routes = [
     Route("/forms/{page}", endpoint=endpoints.example_pages_forms, methods=["GET"]),
     Route("/mailbox/{page}", endpoint=endpoints.example_pages_mailbox, methods=["GET"]),
     Route(
-        "/data_tables/{page}", endpoint=endpoints.example_pages_tables, methods=["GET"],
+        "/tables/{page}", endpoint=endpoints.example_pages_tables, methods=["GET"],
     ),
     Route("/ui/{page}", endpoint=endpoints.example_pages_ui, methods=["GET"]),
 ]
