@@ -14,9 +14,9 @@ detail = "page note found"
 async def example_pages(request):
     try:
         html_page = request.path_params["page"]
-        print(html_page)
         template = f"/pages/{html_page}.html"
         context = {"request": request}
+        logger.debug(f"{request}")
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
     except Exception as e:
@@ -110,7 +110,7 @@ async def example_pages_ui(request):
     logger.info(f"page requested: {html_page}")
     try:
 
-        template = f"/pages/UI/{html_page}.html"
+        template = f"/pages/ui/{html_page}.html"
         context = {"request": request}
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)

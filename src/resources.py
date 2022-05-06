@@ -23,12 +23,12 @@ def init_app():
         # or None and defaults to logging
         log_name="log.log",
         # or None and defaults to "log.log"
-        logging_level="info",
+        logging_level=config_settings.loguru_logging_level,
         # or "info" or "debug" or "warning" or "error" or "critical"
         # or None and defaults to "info"
-        log_rotation="10 MB",
+        log_rotation=config_settings.loguru_rotation,
         # or None and default is 10 MB
-        log_retention="10 Day",
+        log_retention=config_settings.loguru_retention,
         # or None and defaults to "14 Days"
         log_backtrace=True,
         # or None and defaults to False
@@ -37,12 +37,14 @@ def init_app():
         # this is an optional field
         service_id=str(uuid.uuid4()),
         # service id is used to identify the service
-        # this is an optional field
-        append_app_name=True,
+        append_app_name=False,
         # append app name to log file name defaults to false
+        # this is an optional field and will be injected
         append_service_id=False,
         # append app name and service name to log file name defaults to false
+        # this is an optional field and will be injected
     )
+    logger.info("Application logging has been initialized")
     logger.info("Initiating application")
 
     # create_db()

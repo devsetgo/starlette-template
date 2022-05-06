@@ -48,8 +48,11 @@ class Settings(BaseSettings):
         "`",
     ]
 
-    loguru_retention: str = "10 days"
+    log_name: str = "log.log"
+    loguru_retention: str = "30 days"
     loguru_rotation: str = "100 MB"
+    # set value to be default if not set in .env
+    # Values NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL
     loguru_logging_level: str = "INFO"
     release_env: str = "prd"
     debug: bool = False
