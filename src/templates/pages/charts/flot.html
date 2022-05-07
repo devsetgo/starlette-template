@@ -2,8 +2,6 @@
 {% block page_title %}Flot Charts{% endblock %}
 {% block page_stylesheet %}
 <!-- Ionicons -->
-
-
 {% endblock %}
 {% block page_breadcrumb %}Flot Charts{% endblock %}
 {% block page_head_title %}Flot Charts Page{% endblock %}
@@ -117,6 +115,7 @@
             <!-- /.card -->
 
             <!-- Donut chart -->
+            
             <div class="card card-primary card-outline">
               <div class="card-header">
                 <h3 class="card-title">
@@ -125,9 +124,11 @@
                 </h3>
 
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
                   </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
                   </button>
                 </div>
               </div>
@@ -148,13 +149,12 @@
   <!-- /.content-wrapper -->
 
 {% endblock %}
-
 {% block page_sidebar_content %}
 <!-- blank and demo script adds page configuration example -->
-<!-- <div class="p-3">
+<div class="p-3">
   <h5>Title</h5>
   <p>Sidebar content</p>
-</div> -->
+</div>
 {% endblock %}
 {% block page_scripts %}
 <!-- page scripts-->
@@ -165,9 +165,9 @@
 <!-- FLOT CHARTS -->
 <script src="{{ url_for('static' , path='plugins/flot/jquery.flot.js') }}"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script src="{{ url_for('static' , path='plugins/flot-old/jquery.flot.resize.min.js') }}"></script>
+<script src="{{ url_for('static' , path='plugins/flot/plugins/jquery.flot.resize.js') }}"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script src="{{ url_for('static' , path='plugins/flot-old/jquery.flot.pie.min.js') }}"></script>
+<script src="{{ url_for('static' , path='plugins/flot/plugins/jquery.flot.pie.js') }}"></script>
 <!-- Page script -->
 <script>
   $(function () {
