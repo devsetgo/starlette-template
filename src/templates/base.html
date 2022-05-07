@@ -9,15 +9,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
   <title>Starlette-Template | {% block page_title %}{% endblock %}</title>
-  <link rel="SHORTCUT ICON" href="{{ url_for('static' , path='dist/img/favicon.ico') }}">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ url_for('static' , path='plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ url_for('static' , path='dist/css/adminlte.min.css') }}">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  {% include "base_stylesheet.html" %}
   {% block page_stylesheet %}{% endblock %}
 </head>
 
@@ -38,7 +30,7 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item">{% block page_breadcrumb %}{% endblock %}</li>
+                <li class="breadcrumb-item"> {% block page_breadcrumb %}{% endblock %}</li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -60,17 +52,7 @@
 {% include "base_footer.html" %}
 </div>
 <!-- ./wrapper -->
-<!-- REQUIRED SCRIPTS -->
-<!-- jQuery -->
-<script src="{{ url_for('static' , path='plugins/jquery/jquery.min.js') }}"> </script>
-<!-- Bootstrap 4 -->
-<script src="{{ url_for('static' , path='plugins/bootstrap/js/bootstrap.bundle.min.js') }}"> </script>
-<!-- AdminLTE App -->
-<script src="{{ url_for('static' , path='dist/js/adminlte.min.js') }}"> </script>
-
-<!-- HTMX import-->
-<script src="https://unpkg.com/htmx.org@1.5.0"></script>
+{% include "base_javascript.html" %}
 {% block page_scripts %}{% endblock %}
-
 </body>
 </html>
