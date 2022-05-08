@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 """
 endpoint routes for index
@@ -14,12 +13,16 @@ endpoint_routes = [
     Route("/{page}", endpoint=endpoints.example_pages, methods=["GET"]),
     Route("/charts/{page}", endpoint=endpoints.example_pages_charts, methods=["GET"]),
     Route(
-        "/examples/{page}", endpoint=endpoints.example_pages_examples, methods=["GET"],
+        "/examples/{page}",
+        endpoint=endpoints.example_pages_examples,
+        methods=["GET"],
     ),
     Route("/forms/{page}", endpoint=endpoints.example_pages_forms, methods=["GET"]),
     Route("/mailbox/{page}", endpoint=endpoints.example_pages_mailbox, methods=["GET"]),
     Route(
-        "/tables/{page}", endpoint=endpoints.example_pages_tables, methods=["GET"],
+        "/tables/{page}",
+        endpoint=endpoints.example_pages_tables,
+        methods=["GET"],
     ),
     Route("/ui/{page}", endpoint=endpoints.example_pages_ui, methods=["GET"]),
 ]

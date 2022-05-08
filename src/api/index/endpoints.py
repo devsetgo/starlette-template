@@ -17,7 +17,6 @@ async def temp_homepage(request):
 
 # @login_required.require_login
 async def homepage(request):
-  
 
     logger.info(request.session)
     # if "user_name" not in request.session:
