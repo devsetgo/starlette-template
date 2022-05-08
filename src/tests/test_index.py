@@ -3,6 +3,7 @@ import unittest
 import uuid
 
 import pytest
+
 # from starlette.testclient import TestClient
 from async_asgi_testclient import TestClient
 
@@ -21,11 +22,13 @@ async def test_index():
     assert response.status_code == 200
     # assert response.json() == {"message": "Temp Home"}
 
+
 @pytest.mark.asyncio
 async def test_home():
     url = f"/index/home"
     response = await client.get(url)
     assert response.status_code == 200
+
 
 @pytest.mark.asyncio
 async def test_about():
