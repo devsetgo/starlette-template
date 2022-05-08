@@ -13,11 +13,12 @@ from pathlib import Path
 
 from settings import config_settings
 
-resouce_path = Path(__file__).parent
+# not required
+# resouce_path = Path(__file__).parent
 
 # templates and static files
-templates = Jinja2Templates(directory=resouce_path / "resources" / "templates")
-statics = StaticFiles(directory=resouce_path / "resources" / "statics")
+templates = Jinja2Templates(directory="resources/templates")
+# statics = StaticFiles(directory=resouce_path / "resources" / "statics")
 
 
 def init_app():

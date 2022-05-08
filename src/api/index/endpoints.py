@@ -10,9 +10,11 @@ from resources import templates
 
 
 async def temp_homepage(request):
-
+    logger.info(request.session)
+    template = f"home.html"
+    context = {"request": request}
     logger.info(f"page '{request.url.path}' accessed")
-    return JSONResponse({"message": "Temp Home"}, status_code=200)
+    return templates.TemplateResponse(template, context)
 
 
 # @login_required.require_login
