@@ -4,10 +4,10 @@ import datetime
 import logging
 import uuid
 
+from dsg_lib import logging_config
 from loguru import logger
 from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
-from dsg_lib import logging_config
 
 from settings import config_settings
 

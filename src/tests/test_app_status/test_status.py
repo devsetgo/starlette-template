@@ -1,46 +1,63 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from starlette.testclient import TestClient
-# from async_asgi_testclient import TestClient
+import pytest
+from async_asgi_testclient import TestClient
+
 from main import app
 
-client = TestClient(app,backend="asyncio")
+# from starlette.testclient import TestClient
 
 
-class Test(unittest.TestCase):
-    def test_status(self):
+client = TestClient(app)
 
-        url = f"/status/"
-        response = client.get(url)
-        assert response.status_code == 200
 
-    def test_env(self):
+# class Test(unittest.TestCase):
 
-        url = f"/status/env"
-        response = client.get(url)
-        assert response.status_code == 200
 
-    def test_health(self):
+@pytest.mark.asyncio
+async def test_status():
 
-        url = f"/status/health"
-        response = client.get(url)
-        assert response.status_code == 200
+    url = f"/status/"
+    response = await client.get(url)
+    assert response.status_code == 200
 
-    def test_information(self):
 
-        url = f"/status/information"
-        response = client.get(url)
-        assert response.status_code == 200
+@pytest.mark.asyncio
+async def test_env():
 
-    def test_log(self):
+    url = f"/status/env"
+    response = await client.get(url)
+    assert response.status_code == 200
 
-        url = f"/status/log"
-        response = client.get(url)
-        assert response.status_code == 200
 
-    def test_metrics(self):
+@pytest.mark.asyncio
+async def test_health():
 
-        url = f"/status/metrics"
-        response = client.get(url)
-        assert response.status_code == 200
+    url = f"/status/health"
+    response = await client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_information():
+
+    url = f"/status/information"
+    response = await client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_log():
+
+    url = f"/status/log"
+    response = await client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_metrics():
+
+    url = f"/status/metrics"
+    response = await client.get(url)
+    assert response.status_code == 200

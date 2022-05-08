@@ -3,6 +3,7 @@ from loguru import logger
 from starlette.applications import Starlette
 from starlette.exceptions import HTTPException
 from starlette.staticfiles import StaticFiles
+
 from resources import templates
 
 app = Starlette()

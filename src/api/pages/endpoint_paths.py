@@ -3,8 +3,8 @@
 endpoint routes for index
 """
 from starlette.routing import Route
-from api.pages import endpoints
 
+from api.pages import endpoints
 
 # define all routes for endpoint here
 # note alphabetical order is important for prescidence of routes

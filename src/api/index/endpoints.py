@@ -3,7 +3,7 @@
 from loguru import logger
 from sqlalchemy.sql.functions import session_user
 from starlette.exceptions import HTTPException
-from starlette.responses import RedirectResponse, JSONResponse
+from starlette.responses import JSONResponse, RedirectResponse
 
 # from core import login_required
 from resources import templates
@@ -11,8 +11,10 @@ from resources import templates
 
 async def temp_homepage(request):
 
+    template = f"home.html"
+    context = {"request": request}
     logger.info(f"page '{request.url.path}' accessed")
-    return JSONResponse({"message": "Temp Home"}, status_code=200)
+    return templates.TemplateResponse(template, context)
 
 
 # @login_required.require_login

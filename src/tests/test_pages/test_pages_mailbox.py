@@ -3,23 +3,28 @@ import unittest
 import uuid
 
 # from starlette.testclient import TestClient
+import pytest
 from async_asgi_testclient import TestClient
+
 from main import app
 
 client = TestClient(app)
 
 
-class Test(unittest.TestCase):
-    async def test_pages_mailbox(self):
-        pages = ["compose", "mailbox", "read-mail"]
+# class Test(unittest.TestCase):
+@pytest.mark.asyncio
+async def test_pages_mailbox():
+    pages = ["compose", "mailbox", "read-mail"]
 
-        for page in pages:
-            url = f"/pages/mailbox/{page}"
-            response = await client.get(url)
-            assert response.status_code == 200
-
-    async def test_pages_mailbox_error(self):
-        uid = uuid.uuid1()
-        url = f"/pages/mailbox/{uid}"
+    for page in pages:
+        url = f"/pages/mailbox/{page}"
         response = await client.get(url)
-        assert response.status_code == 404
+        assert response.status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_pages_mailbox_error():
+    uid = uuid.uuid1()
+    url = f"/pages/mailbox/{uid}"
+    response = await client.get(url)
+    assert response.status_code == 404

@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
 from concurrent.futures.thread import _worker
+
 from starlette.applications import Starlette
 
-import resources
+import app_middleware
 import app_routes
+import resources
 from core import exceptions
 from resources import init_app
 from settings import config_settings
-import app_middleware
 
 init_app()
 

@@ -2,13 +2,14 @@
 """
 Application status endpoints
 """
-from pathlib import Path
 import re
+from pathlib import Path
+
+from dsg_lib.folder_functions import last_data_files_changed
 from loguru import logger
 from starlette.responses import JSONResponse, PlainTextResponse
-from settings import config_settings
-from dsg_lib.folder_functions import last_data_files_changed
 
+from settings import config_settings
 
 page_url = "/status"
 

@@ -3,9 +3,9 @@
 endpoint routes for status
 """
 from starlette.routing import Route
-from api.app_status import endpoints as status_endpoints
 from starlette_prometheus import metrics
 
+from api.app_status import endpoints as status_endpoints
 
 # define all routes for endpoint here
 # note alphabetical order is important for prescidence of routes
