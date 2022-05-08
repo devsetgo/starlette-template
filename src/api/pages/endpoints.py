@@ -20,7 +20,7 @@ async def example_pages(request):
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
     except Exception as e:
-        logger.critical(
+        logger.error(
             f"Error: Page accessed: /{html_page} , but HTML page {e} does not exist"
         )
         raise HTTPException(404, detail=detail)
@@ -35,7 +35,7 @@ async def example_pages_charts(request):
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
     except Exception as e:
-        logger.critical(
+        logger.error(
             f"Error: Page accessed: /{html_page} , but HTML page {e} does not exist"
         )
         raise HTTPException(404, detail=detail)
@@ -52,7 +52,7 @@ async def example_pages_forms(request):
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
     except Exception as e:
-        logger.critical(
+        logger.error(
             f"Error: Page accessed: /{html_page} , but HTML page {e} does not exist"
         )
         raise HTTPException(404, detail=detail)
@@ -68,7 +68,7 @@ async def example_pages_examples(request):
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
     except Exception as e:
-        logger.critical(
+        logger.error(
             f"Error: Page accessed: /{html_page} , but HTML page {e} does not exist"
         )
         raise HTTPException(404, detail=detail)
@@ -84,7 +84,7 @@ async def example_pages_mailbox(request):
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
     except Exception as e:
-        logger.critical(
+        logger.error(
             f"Error: Page accessed: /{html_page} , but HTML page {e} does not exist"
         )
         raise HTTPException(404, detail=detail)
@@ -100,7 +100,7 @@ async def example_pages_tables(request):
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
     except Exception as e:
-        logger.critical(
+        logger.error(
             f"Error: Page accessed: /{html_page} , but HTML page {e} does not exist"
         )
         raise HTTPException(404, detail=detail)
@@ -116,7 +116,7 @@ async def example_pages_ui(request):
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
     except Exception as e:
-        logger.critical(
+        logger.error(
             f"Error: Page accessed: /{html_page} , but HTML page {e} does not exist"
         )
         raise HTTPException(404, detail=detail)
