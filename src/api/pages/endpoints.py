@@ -47,6 +47,7 @@ async def example_pages_forms(request):
     try:
 
         template = f"/pages/forms/{html_page}.html"
+        print(template)
         context = {"request": request}
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
