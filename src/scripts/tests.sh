@@ -14,7 +14,7 @@ pre-commit run -a
 python3 -m pytest
 
 # change path for coverage.xml
-sed -i "s/<source>\/home\/mike\/pynote_2\/src<\/source>/<source>\/github\/workspace\/src<\/source>/g" /home/mike/pynote_2/src/coverage.xml
+sed -i "s/<source>\/workspaces\/starlette-template\/src<\/source>/<source>\/github\/workspace\/src<\/source>/g" /workspaces/starlette-template/src/coverage.xml
 # create coverage-badge
 coverage-badge -o ../coverage.svg -f
 
