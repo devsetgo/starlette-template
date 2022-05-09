@@ -2,7 +2,6 @@
 """
 Application status endpoints
 """
-import re
 from pathlib import Path
 
 from dsg_lib.folder_functions import last_data_files_changed
