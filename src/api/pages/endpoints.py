@@ -6,8 +6,6 @@ from starlette.staticfiles import StaticFiles
 
 from resources import templates
 
-app = Starlette()
-app.mount("/static", StaticFiles(directory="statics"), name="static")
 
 detail = "page note found"
 
