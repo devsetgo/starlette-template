@@ -6,8 +6,8 @@ Simple Starlette template to start off an app with.
 - [ ] User login
  - [ ] Athentication
  - [ ] Authorization
-- [ ] UI Template to work from
+- [x] UI Template to work from
     - [ ] Example Pages
-- [ ] Health Status (basic functions like Spring Actuator)
-- [ ] Prometheus (Metrics) endpoint
+- [x] Health Status (basic functions like Spring Actuator)
+- [x] Prometheus (Metrics) endpoint
 
