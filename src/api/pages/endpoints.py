@@ -44,9 +44,7 @@ async def example_pages_forms(request):
     html_page = request.path_params["page"]
     logger.info(f"page requested: {html_page}")
     try:
-
         template = f"/pages/forms/{html_page}.html"
-        print(template)
         context = {"request": request}
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
