@@ -42,7 +42,8 @@
 		"peakchen90.open-html-in-browser",
 		"redhat.vscode-yaml",
 		"DavidAnson.vscode-markdownlint",
-		"wholroyd.jinja"
+		"wholroyd.jinja",
+		"Gruntfuggly.todo-tree"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
