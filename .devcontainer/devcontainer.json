@@ -43,7 +43,9 @@
 		"redhat.vscode-yaml",
 		"DavidAnson.vscode-markdownlint",
 		"wholroyd.jinja",
-		"Gruntfuggly.todo-tree"
+		"Gruntfuggly.todo-tree",
+		"ecmel.vscode-html-css",
+		"dbaeumer.vscode-eslint"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
