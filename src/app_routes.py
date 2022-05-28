@@ -12,6 +12,7 @@ from api.pages import endpoint_paths as pages_routing
 
 routes = [
     Route("/", endpoint=index_endpoints.temp_homepage, methods=["GET"]),
+    Route("/about", endpoint=index_endpoints.about_page, methods=["GET"]),
     Mount("/index", name="index", routes=index_routes.endpoint_routes),
     Mount("/pages", name="pages", routes=pages_routing.endpoint_routes),
     Mount("/status", name="status", routes=status_routing.endpoint_routes),
