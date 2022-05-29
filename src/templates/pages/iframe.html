@@ -3,12 +3,11 @@
 {% block page_stylesheet %}{% endblock %}
 {% block page_breadcrumb %}Tabbed IFrames{% endblock %}
 {% block page_head_title %}Tabbed IFrames Page{% endblock %}
+{% block body %}
 <!-- 
   TODO: Fix iframe width 
   Looks like the template needs to be reworked
 -->
-<div class="wrapper">
-{% block body %}
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper iframe-mode" data-widget="iframe" data-loading-screen="750">
   <div class="nav navbar navbar-expand navbar-white navbar-light border-bottom p-0">
@@ -39,7 +38,6 @@
 <!-- /.content-wrapper -->
 
 {% endblock %}
-</div>
 {% block page_sidebar_content %}
 <div class="p-3">
   <h5>Title</h5>
