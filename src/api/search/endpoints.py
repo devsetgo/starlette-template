@@ -21,6 +21,8 @@ async def search_page(request):
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
     except Exception as e:
-        detail:str = f"Error: Page accessed: /search/index , but HTML page {e} does not exist"
+        detail: str = (
+            f"Error: Page accessed: /search/index , but HTML page {e} does not exist"
+        )
         logger.error(detail)
         raise HTTPException(404, detail=detail)
