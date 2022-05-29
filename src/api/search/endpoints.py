@@ -16,8 +16,9 @@ async def search_page(request):
     # html_page = request.path_params["page"]
     try:
         template = "/search/index.html"
-
-        context = {"request": request, "data": search_creator()}
+        # this should be replaced with a function that does actual searches
+        data: list = await search_creator()
+        context = {"request": request, "data": data}
         logger.info(f"page accessed: {template}")
         return templates.TemplateResponse(template, context)
     except Exception as e:
