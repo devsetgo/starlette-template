@@ -24,7 +24,6 @@ async def test_pages():
         "widgets",
         "kanban",
         "iframe",
-        "iframe-dark",
         "index",
         "index2",
         "index3",
