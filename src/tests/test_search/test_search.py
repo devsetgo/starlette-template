@@ -24,6 +24,7 @@ async def test_search_index():
     title_text = pattern_between_two_char(response.text, "<title>", "</title>")
     assert title_text["matched_found"] != 0
 
+
 @pytest.mark.asyncio
 async def test_search_index_error():
     response = await client.get("/search/index/xxx")
