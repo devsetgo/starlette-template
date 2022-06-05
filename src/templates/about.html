@@ -11,7 +11,7 @@
       <div class="card-header">
         <h3 class="card-title">
           <i class="fas fa-star"></i>
-          Starlette Dashboard Template
+          Starlette Template
         </h3>
       </div>
       <div class="card-body">
@@ -119,19 +119,19 @@
               </span></span>    -<span class="ruby"><span class="hljs-regexp"> create a virtualenv on linux or Windows Subsystem Linux
               </span></span>
                   #### Run APP
-                  First Change directory to app
+                  First Change directory to "src/"
 
                   UVICORN
                   Development:
                   ~~~~
                   uvicorn main:app --port 5000 --reload
-                  python3 main.py
-                  ~~~~
+                  ./scripts/dev_run.sh
+
                   Production:
                   ~~~~
                   uvicorn main:app --workers 2
-                  gunicorn -c gunicorn_cfg.py main:app
-                  # Note: gunicorn is the config for the dockerfile
+                  ./scripts/prd_run.sh
+
                   ~~~~
 
                   Docker
