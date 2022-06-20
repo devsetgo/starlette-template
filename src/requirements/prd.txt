@@ -6,7 +6,7 @@ databases[postgresql]==0.5.5
 devsetgo-lib==0.8.0
 email-validator==1.2.1 # from 1.2.0
 gunicorn==20.1.0
-httpx==0.22.0
+httpx==0.23.0
 itsdangerous==2.1.2
 jinja2==3.1.2
 loguru==0.6.0
