@@ -1,0 +1,12 @@
+htmlcov/
+flake8_report/
+tests/
+sqlite_db/*.db
+.coverage
+coverage.xml
+setup.cfg
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class

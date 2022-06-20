@@ -1,0 +1,27 @@
+<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
+    <li class="nav-item has-treeview  menu-{% if section=="jobs"%}open{%else%}closed{%endif%} ">
+      <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-cogs"></i>
+        <p>
+          Job Hunting
+          <i class="right fas fa-angle-left"></i>
+        </p>
+      </a>
+      <ul class="nav nav-treeview">
+        <li class="nav-item">
+          <a href="/jobs/" class="nav-link {% if active=="jobs-index"%} active{%endif%}">
+            <i class="fas fa-cog nav-icon"></i>
+            <p>Applied Jobs</p>
+          </a>
+        </li>
+        <!-- insert other pages -->
+        <!-- <li class="nav-item">
+          <a href="/jobs/new" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>New Job</p>
+          </a>
+        </li> -->
+
+      </ul>
+    </li>
+  </ul>
