@@ -6,13 +6,12 @@ This template is intended to be used with [VS Code](https://code.visualstudio.co
 
 ### Goals
 - [x] Basic layout pattern for a Starlette App
-- [ ] User login
- - [ ] Athentication
- - [ ] Authorization
 - [x] UI Template to work from
     - [x] Example Pages
 - [x] Health Status (basic functions like Spring Actuator)
 - [x] Prometheus (Metrics) endpoint
-
-
-
+- [ ] User login
+ - [ ] Athentication
+ - [ ] Authorization
+ - [ ] Two Factor Authentication
+ - [ ] Athentication
