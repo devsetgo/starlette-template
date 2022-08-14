@@ -3,6 +3,7 @@
 from enum import unique
 import databases
 from loguru import logger
+import loguru
 from settings import config_settings
 
 import sqlalchemy as sa
@@ -40,8 +41,10 @@ import sqlalchemy as sa
 databases_supported: list = ["mysql", "mariadb", "postgresql", "sqlite"]
 
 # Database URI configuration for SQLite, PostgreSQL, MySQL/MariaDB, and Oracle/MSSQL
-if config_settings.database_driver == "sqlite":
-    database_uri = f"sqlite:///sqlite_db/{config_settings.db_name}.db"
+# sqlite://:memory:?cache=shared
+
+if config_settings.release_env == "test":
+    database_uri = "sqlite://:memory:?cache=shared"
 
     engine = sa.create_engine(
         database_uri,
@@ -49,19 +52,32 @@ if config_settings.database_driver == "sqlite":
         max_overflow=10,
         pool_size=100,
     )
-elif config_settings.database_driver.lower() in databases_supported:
-    database_uri = f"{config_settings.database_driver}://{config_settings.db_username}:{config_settings.db_password}@{config_settings.db_location}/{config_settings.db_name}"
-    engine = sa.create_engine(
-        database_uri,
-        poolclass=sa.pool.QueuePool,
-        max_overflow=10,
-        pool_size=100,
-    )
 else:
-    # If the database driver is not supported, raise an error
-    error_text = f"Database driver {config_settings.database_driver} is not supported"
-    logger.critical(error_text)
-    raise Exception(error_text)
+
+    if config_settings.database_driver == "sqlite":
+        database_uri = f"sqlite:///sqlite_db/{config_settings.db_name}.db"
+
+        engine = sa.create_engine(
+            database_uri,
+            poolclass=sa.pool.QueuePool,
+            max_overflow=10,
+            pool_size=100,
+        )
+    elif config_settings.database_driver.lower() in databases_supported:
+        database_uri = f"{config_settings.database_driver}://{config_settings.db_username}:{config_settings.db_password}@{config_settings.db_location}/{config_settings.db_name}"
+        engine = sa.create_engine(
+            database_uri,
+            poolclass=sa.pool.QueuePool,
+            max_overflow=10,
+            pool_size=100,
+        )
+    else:
+        # If the database driver is not supported, raise an error
+        error_text = (
+            f"Database driver {config_settings.database_driver} is not supported"
+        )
+        logger.critical(error_text)
+        raise Exception(error_text)
 
 
 metadata = sa.MetaData()
@@ -100,9 +116,10 @@ users = sa.Table(
 
 class UserHistoryType(enum.Enum):
     USER = "user"
-    SYSTEM="system"
+    SYSTEM = "system"
     ADMIN = "admin"
-    
+
+
 user_history = sa.Table(
     "user_history",
     metadata,

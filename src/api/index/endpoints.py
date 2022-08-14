@@ -4,6 +4,7 @@ from loguru import logger
 from sqlalchemy.sql.functions import session_user
 from starlette.exceptions import HTTPException
 from starlette.responses import JSONResponse, RedirectResponse
+from settings import config_settings
 
 # from core import login_required
 from resources import templates
@@ -14,6 +15,7 @@ async def temp_homepage(request):
     template = f"home.html"
     context = {"request": request}
     logger.info(f"page '{request.url.path}' accessed")
+    logger.critical(config_settings.release_env)
     return templates.TemplateResponse(template, context)
 
 
