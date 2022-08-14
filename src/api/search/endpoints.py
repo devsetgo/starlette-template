@@ -5,9 +5,10 @@ from sqlalchemy.sql.functions import session_user
 from starlette.exceptions import HTTPException
 from starlette.responses import JSONResponse, RedirectResponse
 
+from api.search.function import search_creator
+
 # from core import login_required
 from resources import templates
-from api.search.function import search_creator
 
 # @login_required.require_login
 

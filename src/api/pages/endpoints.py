@@ -6,7 +6,6 @@ from starlette.staticfiles import StaticFiles
 
 from resources import templates
 
-
 detail = "page note found"
 
 
