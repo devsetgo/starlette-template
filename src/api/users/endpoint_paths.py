@@ -10,6 +10,5 @@ from api.auth import endpoints
 # note alphabetical order is important for prescidence of routes
 # https://www.starlette.io/routing/#route-priority
 endpoint_routes = [
-    Route("/auth/login", endpoint=endpoints.login, methods=["POST"]),
-    Route("/auth/logout", endpoint=endpoints.logout, methods=["POST"]),
+    Route("/users", endpoint=endpoints.search_page, methods=["GET"]),
 ]
