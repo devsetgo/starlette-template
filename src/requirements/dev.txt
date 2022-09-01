@@ -15,4 +15,4 @@ pytest-asyncio==0.18.3
 pytest-cov==3.0.0
 requests==2.28.1
 requests-mock==1.9.3
-scalene==1.5.9
+scalene==1.5.10
