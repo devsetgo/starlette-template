@@ -10,6 +10,7 @@ from starlette.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 
 from settings import config_settings
+from core.database_setup import connect_db, create_db, disconnect_db
 
 # templates and static files
 templates = Jinja2Templates(directory="templates")
@@ -17,7 +18,9 @@ statics = StaticFiles(directory="statics")
 
 
 def init_app():
-
+    """
+    Initialization of application functions
+    """
     logging_config.config_log(
         logging_directory="log",
         # or None and defaults to logging
@@ -52,15 +55,39 @@ def init_app():
 
 
 async def startup():
-
+    """
+    Functions and logging during startup
+    """
     logger.info("starting up services")
     # start functions like database etc..
+    # create database
+    create_db()
+    # connect to database
+    await connect_db()
+    logger.info("database connection established")
+
+    # Create demo data if environment variable is true
+    if config_settings.create_demo_data == True:
+        # create demo data
+        import time
+        from core.demo_data import create_demo_data
+
+        qty: int = config_settings.create_demo_qty
+        logger.info(
+            "Creating demo data is {config_settings.create_demo_data} and with a create qty of {qty}"
+        )
+        await create_demo_data(qty)
 
 
 async def shutdown():
-
+    """
+    Functions and logging during shutdown
+    """
     logger.info("shutting down services")
     # shutdown functions like database, saves etc..
+    # disconnect from database
+    await disconnect_db()
+    logger.info("database disconnected")
 
 
 # add other resource functions below here

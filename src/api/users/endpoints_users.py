@@ -8,6 +8,7 @@ from starlette.responses import JSONResponse, RedirectResponse
 # from core import login_required
 from resources import templates
 
+
 # @login_required.require_login
 async def users_list(request):
     # html_page = request.path_params["page"]
@@ -42,6 +43,7 @@ async def user_profile(request):
         )
         logger.error(detail)
         raise HTTPException(404, detail=detail)
+
 
 # @login_required.require_login
 async def user_profile_update(request):

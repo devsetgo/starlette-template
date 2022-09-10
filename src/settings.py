@@ -19,27 +19,23 @@ class Settings(BaseSettings):
     # application configuration
     release_env: str = "prd"
     debug: bool = False
-
+    create_demo_data: bool = False
+    create_demo_qty: int = 0
     # Gunicorn or Uvicorn workers
     workers: int = None
-
     # session logout timeout
     max_timeout: int = 7200
     login_timeout: int = 120
-
     # require HTTPS
     https_on: bool = False
-
     # endable prometheus metrics
     prometheus_on: bool = True
-
     # Database Configuration
     database_driver: str = "sqlite"
     db_username: str = "test"
     db_password: str = "test"
     db_location: str = "localhost"
     db_name: str = "api"
-
     # logging settings
     log_name: str = "log.log"
     loguru_retention: str = "30 days"
@@ -47,7 +43,6 @@ class Settings(BaseSettings):
     # set value to be default if not set in .env
     # Values NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL
     loguru_logging_level: str = "INFO"
-
     admin_create: bool = False
     admin_user_name: str = None
     admin_user_key: str = None

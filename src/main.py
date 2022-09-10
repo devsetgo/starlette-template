@@ -10,6 +10,8 @@ import resources
 from core import exceptions
 from resources import init_app
 from settings import config_settings
+from loguru import logger
+
 
 init_app()
 

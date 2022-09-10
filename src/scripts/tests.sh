@@ -16,6 +16,8 @@ cp .env .env_orginal
 
 # change to test environment in .env file
 sed -i "s/RELEASE_ENV='dev'/RELEASE_ENV='test'/" .env
+# change to create demo data in .env file
+sed -i "s/CREATE_DEMO_DATA=False/CREATE_DEMO_DATA=True/" .env
 
 # bash scripts/test.sh --cov-report=html ${@}
 python3 -m pytest

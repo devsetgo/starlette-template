@@ -25,4 +25,5 @@ class LoggerMiddleware(BaseHTTPMiddleware):
                 f"Request Method: {method.upper()} request via {url} accessed from {client} by {user_id} for {request['path']}"
             )
             logger.debug(f"full_request_data: {dict(request)}")
+
         return response
