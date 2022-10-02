@@ -13,7 +13,7 @@ from settings import config_settings
 from core.database_setup import connect_db, create_db, disconnect_db
 
 # templates and static files
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="templates", autoescape=False, auto_reload=True)
 statics = StaticFiles(directory="statics")
 
 

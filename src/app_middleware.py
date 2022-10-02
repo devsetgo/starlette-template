@@ -3,7 +3,7 @@
 from starlette.middleware import Middleware
 from starlette.middleware.sessions import SessionMiddleware
 
-# from starlette_wtf import CSRFProtectMiddleware
+from starlette_wtf import CSRFProtectMiddleware
 from starlette_prometheus import PrometheusMiddleware
 
 from core.custom_middleware import LoggerMiddleware
@@ -18,6 +18,7 @@ middleware = [
         session_cookie="session",
     ),
     Middleware(PrometheusMiddleware),
+    Middleware(CSRFProtectMiddleware, csrf_secret=config_settings.csrf_secret),
     # Middleware(PrometheusMiddleware),
     # Middleware(LoggerMiddleware),
 ]

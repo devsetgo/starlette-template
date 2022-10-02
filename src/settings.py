@@ -7,7 +7,7 @@ environment variables.
 
 import secrets
 from functools import lru_cache
-
+import logging
 from pydantic import BaseSettings
 
 
@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     workers: int = None
     # session logout timeout
     max_timeout: int = 7200
+    same_site: str = "lax"
     login_timeout: int = 120
     # require HTTPS
     https_on: bool = False
@@ -47,8 +48,8 @@ class Settings(BaseSettings):
     admin_user_name: str = None
     admin_user_key: str = None
     admin_user_email: str = None
-    csrf_secret = secrets.token_hex(128)
-    secret_key = secrets.token_hex(128)
+    csrf_secret = secrets.token_hex(48)
+    secret_key = secrets.token_hex(512)
     invalid_character_list: list = [
         " ",
         ";",
@@ -77,7 +78,7 @@ class Settings(BaseSettings):
         env_file_encoding = "utf-8"
 
 
-# @lru_cache()
+@lru_cache()
 def get_settings():
     return Settings()
 

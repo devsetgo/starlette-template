@@ -10,6 +10,7 @@ detail = "page note found"
 
 
 async def example_pages(request):
+    
     try:
         html_page = request.path_params["page"]
         template = f"/pages/{html_page}.html"

@@ -11,8 +11,6 @@ from api.search.function import search_creator
 from resources import templates
 
 # @login_required.require_login
-
-
 async def search_page(request):
     # html_page = request.path_params["page"]
     try:

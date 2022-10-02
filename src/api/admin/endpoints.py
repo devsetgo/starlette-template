@@ -6,41 +6,46 @@ from starlette.exceptions import HTTPException
 from starlette.responses import JSONResponse, RedirectResponse
 from settings import config_settings
 
-from core import login_required
+# from core import login_required
 from resources import templates
 
-@login_required.require_login
+
 async def index(request):
 
     template = f"index.html"
     context = {"request": request}
     logger.info(f"page '{request.url.path}' accessed")
+    logger.critical(config_settings.release_env)
     return templates.TemplateResponse(template, context)
 
-@login_required.require_login
-async def temp_homepage(request):
 
-    template = f"home.html"
+async def users_list(request):
+    # TODO: create list of users to review
+    template = f"users-list.html"
     context = {"request": request}
     logger.info(f"page '{request.url.path}' accessed")
+    logger.critical(config_settings.release_env)
     return templates.TemplateResponse(template, context)
 
 
-@login_required.require_login
-async def homepage(request):
-
-    logger.info(request.session)
-    # if "user_name" not in request.session:
-    #     logger.info(f"page '{request.url.path}' accessed")
-    #     return RedirectResponse(url=f"/", status_code=303)
-    logger.info(f"page '{request.url.path}' accessed")
-    return RedirectResponse(url=f"/pages/index", status_code=303)
-
-
-@login_required.require_login
-async def about_page(request):
-
-    template = f"about.html"
+async def access_request(request):
+    # TODO: create open access request review
+    template = f"access-request.html"
     context = {"request": request}
     logger.info(f"page '{request.url.path}' accessed")
+    logger.critical(config_settings.release_env)
     return templates.TemplateResponse(template, context)
+
+
+async def access_rejections(request):
+    # TODO: create open access request review
+    template = f"access-rejections.html"
+    context = {"request": request}
+    logger.info(f"page '{request.url.path}' accessed")
+    logger.critical(config_settings.release_env)
+    return templates.TemplateResponse(template, context)
+
+
+async def access_decision(request):
+    # TODO: complete user access accept/reject status
+    return "state"

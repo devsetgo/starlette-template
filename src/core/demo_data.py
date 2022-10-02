@@ -28,11 +28,17 @@ async def create_demo_data(qty: int):
 
         await get_user_list()
         for u in tqdm(user_id):
-            time.sleep(.005)
-            for _ in tqdm(range(100),leave=False):
+            time.sleep(0.005)
+            for _ in tqdm(range(100), leave=False):
                 await user_history_insert(u)
+
+    query_select = user_history.select().limit(10)
+    results = await fetch_all_db(query=query_select)
+
     t1 = time.time() - t0
     logger.info(f"demo took {t1:.2f} seconds to create")
+    print(t1)
+
 
 async def confirm_db_empty() -> bool:
     # if empty, return true
@@ -49,6 +55,7 @@ async def confirm_db_empty() -> bool:
 
 
 async def create_user():
+
     set_id = str(uuid.uuid1())
     rand_name: str = silly.noun()
     rand_num: int = random.randint(1, 10000)
@@ -59,7 +66,7 @@ async def create_user():
 
     user_information = {
         "_id": set_id,
-        "username": username,
+        "user_name": username,
         "email": email,
         "notes": notes,
         "password": hash_pwd,
@@ -90,9 +97,9 @@ async def user_history_insert(user_id: str):
     if history_type[rand_hist] != "user":
         id = None
     else:
-        id=user_id
+        id = user_id
 
-    base_id=str(uuid.uuid1())
+    base_id = str(uuid.uuid1())
     history_data = {
         "_id": base_id,
         "user_id": id,
@@ -103,4 +110,3 @@ async def user_history_insert(user_id: str):
     query = user_history.insert()
     await execute_one_db(query=query, values=history_data)
     logger.warning(f"DEMO user history ID: {base_id} created")
-    return True

@@ -19,7 +19,7 @@
       <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
-        <form action="/user/login" method="post">
+        <form action="/users/login" method="post">
           {{ form.csrf_token }}
           <div class="input-group mb-3">
             {{ form.user_name(placeholder='User Name') }}
