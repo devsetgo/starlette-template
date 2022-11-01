@@ -5,7 +5,7 @@ autopep8==1.6.0
 black==22.8.0
 coverage==6.4.1
 coverage-badge==1.1.0
-flake8==5.0.3
+flake8==5.0.4
 Graphviz==0.20.1
 pre-commit==2.19.0 # from 2.18.1
 pydot==1.4.2
