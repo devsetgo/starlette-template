@@ -1,5 +1,5 @@
 -r prd.txt
-async-asgi-testclient==1.4.10
+async-asgi-testclient==1.4.11
 autoflake==1.6.1
 autopep8==1.6.0
 black==22.8.0
