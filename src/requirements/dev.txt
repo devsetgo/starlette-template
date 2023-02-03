@@ -2,7 +2,7 @@
 async-asgi-testclient==1.4.11
 autoflake==2.0.1
 autopep8==1.6.0
-black==22.8.0
+black==23.1.0
 coverage==6.4.1
 coverage-badge==1.1.0
 flake8==6.0.0
