@@ -1,6 +1,6 @@
 -r prd.txt
 async-asgi-testclient==1.4.11
-autoflake==2.0.1
+autoflake==2.0.2
 autopep8==2.0.1
 black==23.1.0
 coverage==7.2.1
