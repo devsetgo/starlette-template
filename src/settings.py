@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     create_demo_data: bool = False
     create_demo_qty: int = 0
     # Gunicorn or Uvicorn workers
-    workers: int = None
+    workers: int = 2
     # session logout timeout
     max_timeout: int = 7200
     same_site: str = "lax"
@@ -48,8 +48,10 @@ class Settings(BaseSettings):
     admin_user_name: str = None
     admin_user_key: str = None
     admin_user_email: str = None
+    # secrets
     csrf_secret = secrets.token_hex(48)
     secret_key = secrets.token_hex(512)
+    # invalid character list
     invalid_character_list: list = [
         " ",
         ";",

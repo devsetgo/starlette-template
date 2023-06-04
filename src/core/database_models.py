@@ -77,7 +77,7 @@ user_login_failures = sa.Table(
     sa.Column("ip_address", sa.String, index=True),
     sa.Column("is_valid", sa.Boolean, index=True),
     sa.Column("is_active", sa.Boolean, index=True),
-    sa.Column("request_data",sa.JSON())
+    sa.Column("request_data", sa.JSON()),
 )
 
 # user history type

@@ -13,6 +13,6 @@ from api.users import endpoints
 # base_path: str = "/users"
 endpoint_routes = [
     Route(f"/", endpoint=endpoints.login, methods=["GET", "UPDATE"]),
-    Route(f"/login", endpoint=endpoints.login, methods=["GET","POST"]),
+    Route(f"/login", endpoint=endpoints.login, methods=["GET", "POST"]),
     Route(f"/logout", endpoint=endpoints.logout, methods=["POST"]),
 ]

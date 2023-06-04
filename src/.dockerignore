@@ -5,7 +5,8 @@ sqlite_db/*.db
 .coverage
 coverage.xml
 setup.cfg
-
+/tests
+docker_token.txt
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

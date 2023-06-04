@@ -9,6 +9,7 @@ from settings import config_settings
 from core import login_required
 from resources import templates
 
+
 @login_required.require_login
 async def index(request):
 
@@ -16,6 +17,7 @@ async def index(request):
     context = {"request": request}
     logger.info(f"page '{request.url.path}' accessed")
     return templates.TemplateResponse(template, context)
+
 
 @login_required.require_login
 async def temp_homepage(request):

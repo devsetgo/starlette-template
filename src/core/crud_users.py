@@ -25,13 +25,13 @@ async def user_register(data: dict):
         # input fields
         "first_name": data["first_name"],
         "last_name": data["last_name"],
-        "last_login": datetime.datetime.now(),
+        "last_login": datetime.datetime.utcnow(),
         "user_name": data["user_name"].lower(),
         "password": data["password"],
         "email": data["email"].lower(),
         # system created fields
         "id": str(uuid.uuid4()),
-        "date_created": datetime.datetime.now(),
+        "date_created": datetime.datetime.utcnow(),
         "is_active": is_active,
         "is_admin": False,
     }
@@ -82,7 +82,7 @@ async def user_update(data: dict):
     values = {
         "first_name": data["first_name"],
         "last_name": data["last_name"],
-        "last_login": datetime.datetime.now(),
+        "last_login": datetime.datetime.utcnow(),
         "email": data["email"].lower(),
     }
     user_name = data["user_name"]
@@ -100,7 +100,7 @@ async def user_update(data: dict):
 # update user login
 async def user_login_update(user_name: dict):
 
-    values: dict = {"last_login": datetime.datetime.now()}
+    values: dict = {"last_login": datetime.datetime.utcnow()}
     query = users.update().where(users.c.user_name == user_name)
     try:
         await execute_one_db(query=query, values=values)

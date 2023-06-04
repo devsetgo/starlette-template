@@ -49,8 +49,8 @@ async def create_review_user(user_name: str):
 
     id = uuid.uuid4()
     values = {
-        "date_create": datetime.datetime.now(),
-        "date_updated": datetime.datetime.now(),
+        "date_create": datetime.datetime.utcnow(),
+        "date_updated": datetime.datetime.utcnow(),
         "user_name": user_name.lower(),
         "access_id": str(id),
         "is_reviewed": False,
@@ -82,7 +82,7 @@ async def update_user_review(data: dict):
     # "is_active": is_active,
     # "is_admin": is_admin,
     values = {
-        "date_updated": datetime.datetime.now(),
+        "date_updated": datetime.datetime.utcnow(),
         "is_reviewed": data["is_reviewed"],
         "is_rejected": data["is_rejected"],
         "is_admin": data["is_admin"],

@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import datetime
+import re
 import uuid
 
 from loguru import logger
+
 # from pydantic.utils import is_valid_field
 from starlette.responses import RedirectResponse
 from starlette_wtf import csrf_protect
@@ -14,22 +16,24 @@ from core.user_lib import encrypt_pass
 
 # from endpoints.admin.crud import create_review_user
 # from endpoints.user import crud as user_crud
-from core.crud_users import user_register , user_update, user_info
+from core.crud_users import user_register, user_update, user_info
 from core.database_models import user_login_failures
 from api.users import form_validators, forms
 from resources import templates
+from starlette.background import BackgroundTask
+
 
 page_url = "/users"
 
-
 detail = "something went wrong"
+
 
 @csrf_protect
 async def login(request):
-
-    logger.debug(f"{request}")
-    form = await forms.AccountLoginForm.from_formdata(request)
-    form_data = await request.form()
+    rq = request
+    logger.debug(f"{rq}")
+    form = await forms.AccountLoginForm.from_formdata(rq)
+    form_data = await rq.form()
 
     if await form.validate_on_submit():
         logger.debug(form_data)
@@ -64,25 +68,38 @@ async def login(request):
             or user_data["is_active"] == False
             or valid_login_result == False
         ):
+            
+            # logger.info(f"Processing login failure record")
+            request_json = await request.body()
             client_host = request.client.host
             fail_values: dict = {
-                "id": str(uuid.uuid4()),
-                "date_created": datetime.datetime.now(),
                 "user_name": user_name,
                 "ip_address": client_host,
                 "is_valid": is_valid,
                 "is_active": is_active,
+                "request_data":request_json
             }
-            fail_query = user_login_failures.insert()
-            await execute_one_db(query=fail_query, values=fail_values)
-            logger.warning(f"User login failure for {user_name} from {client_host}")
+            # task = BackgroundTask(
+            #     form_validators.register_login_failure,
+            #     fail_values=fail_values,
+            # )
+
+            task=BackgroundTask(form_validators.test_bg,color="Blue")
+            print(task)
+
+            # logger.error(request_json)
+            # fail_query = user_login_failures.insert()
+            # await execute_one_db(query=fail_query, values=fail_values)
+            # logger.warning(
+            #     f"User login failure for {user_name} from {client_host}. {request}"
+            # )
             form.user_name.errors.append(
                 f"User name or Password is invalid or the user name is no longer active"
             )
 
         else:
 
-            last_login_values = {"last_login": datetime.datetime.now()}
+            last_login_values = {"last_login": datetime.datetime.utcnow()}
             last_login_query = users.update().where(
                 users.c.user_name == user_data["id"]
             )
@@ -91,50 +108,21 @@ async def login(request):
             # get user user_name
             request.session["id"] = user_data["id"]
             request.session["user_name"] = user_data["user_name"]
-            request.session["updated"] = str(datetime.datetime.now())
+            request.session["updated"] = str(datetime.datetime.utcnow())
             request.session["admin"] = user_data["is_admin"]
-            logger.info(f'logger {request.session["id"]} and send to profile page')
-            return RedirectResponse(url="/", status_code=303)
-
-        if result == False:
-            client_host = request.client.host
-            fail_values: dict = {
-                "id": str(uuid.uuid4()),
-                "date_created": datetime.datetime.now(),
-                "user_name": user_name,
-                "ip_address": client_host,
-            }
-            fail_query = user_login_failures.insert()
-            await execute_one_db(query=fail_query, values=fail_values)
-            logger.warning(f"User login failure for {user_name} from {client_host}")
-            form.user_name.errors.append(f"user_name or Password is invalid")
-            # return RedirectResponse(url="/users/login", status_code=404)
-
-        elif user_data["is_active"] == False:
-            form.user_name.errors.append(
-                f"The user id is not active or been approved for login"
-            )
-        else:
-            # get user user_name
-            request.session["id"] = user_data["id"]
-            request.session["user_name"] = user_data["user_name"]
-            request.session["updated"] = str(datetime.datetime.now())
-            request.session["admin"] = user_data["is_admin"]
-            # request.session[
-            #     "realname"
-            # ] = f'{user_data["first_name"]} {user_data["last_name"]}'
             logger.info(f'logger {request.session["id"]} and send to profile page')
             return RedirectResponse(url="/", status_code=303)
 
     template = f"{page_url}/login.html"
 
-    data:dict = {'name':'bob'}
+    data: dict = {"name": "bob"}
 
     context = {"request": request, "form": form, "data": data}
     logger.debug(context)
     logger.info(f"page accessed: /{page_url}/login")
 
-    return templates.TemplateResponse(name=template,context=context,status_code=200)
+    return templates.TemplateResponse(name=template, context=context, status_code=200)
+
 
 @csrf_protect
 async def register(request):
