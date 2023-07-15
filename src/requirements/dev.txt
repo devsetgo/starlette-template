@@ -7,7 +7,7 @@ coverage==7.2.7
 coverage-badge==1.1.0
 flake8==6.0.0
 Graphviz==0.20.1
-pre-commit==3.2.2 # from 2.18.1
+pre-commit==3.3.3 # from 2.18.1
 pydot==1.4.2
 pylint==2.14.5 # from 2.13.7
 pytest==7.4.0
