@@ -12,7 +12,7 @@ pydot==1.4.2
 pylint==2.14.5 # from 2.13.7
 pytest==7.4.0
 pytest-asyncio==0.18.3
-pytest-cov==4.0.0
+pytest-cov==4.1.0
 requests==2.31.0
 requests-mock==1.11.0
 scalene==1.5.19
